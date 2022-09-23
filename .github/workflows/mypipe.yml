@@ -6,9 +6,10 @@ on:
     - main
     
 jobs:
+  
   build:
     runs-on: ubuntu-latest
-    
+      
     steps:
     - name: helloworld
-      run: echo env.RUNNER_OS
+      run: echo "${{ env.RUNNER_OS }}"
