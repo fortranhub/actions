@@ -13,3 +13,11 @@ jobs:
     steps:
     - name: helloworld
       run: echo "$RUNNER_OS"
+      
+    - uses: actions/checkout@v3
+      with:
+        repository: 'hakobmkoyan773/initial'
+        path: './saml'
+        
+    - name: ls_current_path
+      run: ls .
