@@ -12,4 +12,4 @@ jobs:
       
     steps:
     - name: helloworld
-      run: echo "${{ env.RUNNER_OS }}"
+      run: echo "$RUNNER_OS"
