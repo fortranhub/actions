@@ -11,4 +11,4 @@ jobs:
     
     steps:
     - name: helloworld
-      run: echo Hello World
+      run: echo env.RUNNER_OS
