@@ -23,9 +23,7 @@ jobs:
             PASSWORD: ${{ secrets.docker_password }}
 
             SEMVER: 0.1.0
-            HOST: HOSTNAME.com
-            ORG: PROJECTNAME
-            APPNAME: APPNAME
+            HOST: docker.com
             # if DEV is true then your image tag is as follow
             # 0.1.0-dev-c7bf9e21
             # where c7bf9e21 is your 8 char git hash
