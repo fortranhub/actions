@@ -19,7 +19,7 @@ jobs:
         id: image_build_push
         uses: ryanjfrizzell/action-bpd@master
         with:
-          docker_registry_url: 'docker.io'
+          docker_registry_url: 'https://index.docker.io/v1/'
           docker_registry_owner: 'hakobmkoyan771'
           docker_repository: 'hakobmkoyan771'
           docker_image: 'actionsimage'
