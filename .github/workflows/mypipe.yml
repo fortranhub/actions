@@ -25,7 +25,7 @@ jobs:
           docker_image: 'actionsimage'
           docker_username: ${{ secrets.docker_username }}
           docker_password: ${{ secrets.docker_password }}
-          dockerfile: 'actions/Dockerfile'
+          dockerfile: './Dockerfile'
         
       - name: Get output
         run: |
