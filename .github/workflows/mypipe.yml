@@ -1,23 +1,32 @@
-name: CI-pipeline
+name: Build and push
 
-on:
+on: 
   push:
     branches:
-    - hakob/**
-    
+    - main
+
 jobs:
-  
   build:
     runs-on: ubuntu-latest
-      
     steps:
-    - name: helloworld
-      run: echo "$RUNNER_OS"
-      
-    - uses: actions/checkout@v3
-      with:
-        repository: 'hakobmkoyan772/initial'
-        path: './saml'
+      - name: git checkout
+        uses: actions/checkout@v3
+    
+      - name: debug
+        run: ls
         
-    - name: ls_current_path
-      run: ls .
+      - name: build image
+        id: image_build_push
+        uses: ryanjfrizzell/action-bpd@master
+        with:
+          docker_registry_url: 'docker.io'
+          docker_registry_owner: 'hakobmkoyan771'
+          docker_repository: 'hakobmkoyan771'
+          docker_image: 'actionsimage'
+          docker_username: ${{ secrets.docker_username }}
+          docker_password: ${{ secrets.docker_password }}
+          dockerfile: 'actions/Dockerfile'
+        
+      - name: Get output
+        run: |
+          echo "${{ steps.image_build_push.outputs.imageinfo }}"
