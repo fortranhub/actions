@@ -17,19 +17,17 @@ jobs:
         
       - name: build image
         id: image_build_push
-        uses: tegarimansyah/docker_build_push@master
+        uses: Leukocyte-Lab/build-n-push@v1
         env:
-            DOCKER_USER: ${{ secrets.docker_username }}
-            PASSWORD: ${{ secrets.docker_password }}
-
-            SEMVER: 0.1.0
-            HOST: docker.com
-            # if DEV is true then your image tag is as follow
-            # 0.1.0-dev-c7bf9e21
-            # where c7bf9e21 is your 8 char git hash
-            # best for your staging server
-            # else, the tag will be 0.1.0 ($SEMVER)
-            DEV: true
+          DOCKER_BUILDKIT: 1
+        with:
+          ssh: false
+          ssh_private_key: ${{ secrets.SSH_KEY }}
+          repository: myorg/myrepo
+          username: ${{ secrets.docker_username }}
+          password: ${{ secrets.docker_password }}
+          registry: hub.docker.com
+          tags: latest
         
       - name: Get output
         run: |
