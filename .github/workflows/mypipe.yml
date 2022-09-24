@@ -23,7 +23,7 @@ jobs:
         with:
           ssh: false
           ssh_private_key: ${{ secrets.SSH_KEY }}
-          repository: myorg/myrepo
+          repository: hakobmkoyan771/actionsimage
           username: ${{ secrets.docker_username }}
           password: ${{ secrets.docker_password }}
           registry: index.docker.io
