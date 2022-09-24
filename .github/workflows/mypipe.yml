@@ -17,15 +17,21 @@ jobs:
         
       - name: build image
         id: image_build_push
-        uses: ryanjfrizzell/action-bpd@master
-        with:
-          docker_registry_url: 'https://index.docker.io/v1/'
-          docker_registry_owner: 'hakobmkoyan771'
-          docker_repository: 'hakobmkoyan771'
-          docker_image: 'actionsimage'
-          docker_username: ${{ secrets.docker_username }}
-          docker_password: ${{ secrets.docker_password }}
-          dockerfile: './Dockerfile'
+        uses: tegarimansyah/docker_build_push@master
+        env:
+            DOCKER_USER: ${{ secrets.docker_username }}
+            PASSWORD: ${{ secrets.docker_password }}
+
+            SEMVER: 0.1.0
+            HOST: HOSTNAME.com
+            ORG: PROJECTNAME
+            APPNAME: APPNAME
+            # if DEV is true then your image tag is as follow
+            # 0.1.0-dev-c7bf9e21
+            # where c7bf9e21 is your 8 char git hash
+            # best for your staging server
+            # else, the tag will be 0.1.0 ($SEMVER)
+            DEV: true
         
       - name: Get output
         run: |
